@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TwitterProject</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+<body>
+
+
+
+<header>
+  <div class="actions">
+
+    <%= link_to raw('<i class="fa fa-home" aria-hidden="true"></i>'), '/' %>
+  </div>
+
+  <div class="logo">
+    <i class="fa fa-twitter" aria-hidden="true"></i>
+
+  </div>
+  <div id="userDetails">
+    <% if user_signed_in? %>
+
+        <%= link_to 'logout', destroy_user_session_path, method: :delete , data: {confirm: 'Are you Sure?'}%>
+
+        <%= current_user.email %>
+
+<% else %>
+<%= link_to 'Sign In', new_user_session_path %>
+    <% end %>
+  </div>
+</header>
+
+
+<section id="mainSection" id="top">
+  <aside id="mainAside"></aside>
+  <main id="mainMain"><%= yield %></main>
+</section>
+
+
+<footer></footer>
+
+
+<div class="floatingTop"><a href="#top" id="toTop">^ </a></div>
+
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<%= constant_string %>
+<br>
+<%= form_tag '/create_tweet_remote', id: "create_tweet", remote: true do %>
+    <%= text_area_tag :content %>
+
+    <br>
+    <%= submit_tag "Create Tweet" %>
+    <span id="letters">0</span>
+
+<% end %>
+
+
+<%= form_tag '/', method: :get do %>
+
+    <%=   autocomplete_field_tag 'email', '', autocomplete_user_email_path, :size => 20 %>
+    <br>
+    <%= submit_tag 'search' %>
+<% end %>
+
+<div class="tweets" id="tweets">
+  <% @tweets.each do |tweet| %>
+
+<%= render 'tweet' , :tweet => tweet %>
+
+  <% end %>
+</div>
+
+
+
+<!-- <div class="pageNav">
+<ul>
+<% for page_number in 0..@page_count do %>
+
+<li>
+
+<% if page_number == @page_number %>
+<%= page_number %>
+
+<% else %>
+<%= link_to page_number.to_s,  url_for(controller: :home, action: :index, page_number: page_number) %> 
+
+<% end %>
+
+</li>
+
+<% end %>
+</ul>
+</div> -->
+
+
+
